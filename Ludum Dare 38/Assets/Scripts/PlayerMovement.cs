@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour {
                 Flip();
                 directionLeft = false;
             }
-            
 
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
@@ -67,7 +66,7 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
-    void Flip()
+    public void Flip()
     {
         Vector3 scale = transform.localScale;
         scale.x *= -1;

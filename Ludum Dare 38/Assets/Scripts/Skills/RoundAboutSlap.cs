@@ -5,16 +5,31 @@ using UnityEngine;
 
 public class RoundAboutSlap : Skill {
 
+    public Collider2D attackTrigger;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        attackTrigger.enabled = false;
+    }
 
-	}
+    void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Use();
+        }
+
+        if (IsUse)
+        {
+            attackTrigger.enabled = true;
+        }
+
+        if (TimeCoolDown > 3)
+        {
+            attackTrigger.enabled = false;
+        }
+    }
 
     public override void Function()
     {
