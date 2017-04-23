@@ -19,13 +19,17 @@ public class PlayerMovement : MonoBehaviour {
     private Transform myTransform;
 
     private GameObject seal;
-   
 
+    private Animator animator;
+   
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         myTransform = GetComponent<Transform>();
         seal = this.gameObject.transform.GetChild(0).gameObject;
+
+        animator = GetComponent<Animator>();
+        
     }
 
     private void FixedUpdate()
@@ -54,6 +58,9 @@ public class PlayerMovement : MonoBehaviour {
         {
             seal.GetComponent<SpriteRenderer>().flipX = false;
         }
+
+        animator.SetFloat("Speed", rb.velocity.x);
+        animator.SetBool("Ground", grounded);
 
     }
 }
