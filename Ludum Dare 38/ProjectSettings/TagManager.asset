@@ -16,7 +16,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - Canvas
   - 
   - 
   - 
@@ -40,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 2330470627
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Canvas
+    uniqueID: 1729088191
     locked: 0

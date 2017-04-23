@@ -24,7 +24,7 @@ public class Slap : Skill {
         {
             attackTrigger.enabled = true;
         }
-        else
+        if(TimeCoolDown > 0.2)
         {
             attackTrigger.enabled = false;
         }

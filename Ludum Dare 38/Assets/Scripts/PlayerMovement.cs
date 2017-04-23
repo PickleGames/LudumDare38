@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpForce;
 
     // ground check variables
-    bool grounded;
+    public bool grounded;
     public Transform groundCheck;
     float groundRadius = .25f;
     public LayerMask whatIsGround;
@@ -20,14 +20,14 @@ public class PlayerMovement : MonoBehaviour {
     private GameObject sealTail;
 
 
-  //  private Animator animator;
+   private Animator animator;
    
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         seal = this.gameObject.transform.GetChild(0).gameObject;
 
-  //      animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         sealTail = this.gameObject.transform.GetChild(3).gameObject;
 
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour {
             if (rb.velocity.x > 0 && directionLeft)
             {
                 Flip();
-                directionLeft = false;
+                directionLeft = transform.localScale.x != -1;
             }
 
         }
@@ -67,13 +67,14 @@ public class PlayerMovement : MonoBehaviour {
             if (rb.velocity.x < 0 && !directionLeft)
             {
                 Flip();
-                directionLeft = true;
+                directionLeft = transform.localScale.x != -1;
             }
         }
-            
 
-     //   animator.SetFloat("Speed", rb.velocity.x);
-      //  animator.SetBool("Ground", grounded);
+        
+
+        animator.SetFloat("Speed", rb.velocity.x);
+        animator.SetBool("Ground", grounded);
 
     }
 

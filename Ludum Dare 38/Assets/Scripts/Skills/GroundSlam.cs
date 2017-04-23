@@ -6,15 +6,21 @@ using UnityEngine;
 public class GroundSlam : Skill {
 
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Collider2D attackTrigger;
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Use();
+        }
+    }
 
     public override void Function()
     { 
