@@ -7,13 +7,15 @@ public abstract class Skill : MonoBehaviour {
     public float defaultCoolDown;
     public GameObject target;
     private float timeCoolDown;
+    public float TimeCoolDown { get { return timeCoolDown; } }
     public bool IsUse;
+    public float strength;
 
     private bool IsUsable;
 
     public void Awake () {
         IsUsable = true;
-        IsUse = true;
+        IsUse = false;
         Debug.Log("deeznt");
 	}
 	

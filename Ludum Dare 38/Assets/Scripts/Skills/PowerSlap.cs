@@ -5,15 +5,31 @@ using UnityEngine;
 
 public class PowerSlap : Skill {
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Collider2D attackTrigger;
+
+    void Start()
+    {
+        attackTrigger.enabled = false;
+    }
+
+    void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Use();
+        }
+
+        if (IsUse)
+        {
+            attackTrigger.enabled = true;
+        }
+
+        if (TimeCoolDown > 0.5)
+        {
+            attackTrigger.enabled = false;
+        }
+    }
 
     public override void Function()
     {

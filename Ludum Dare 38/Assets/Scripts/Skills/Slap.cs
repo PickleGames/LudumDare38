@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Slap : Skill {
 
-    public float strength;
     public Collider2D attackTrigger;
 
     void Start()
