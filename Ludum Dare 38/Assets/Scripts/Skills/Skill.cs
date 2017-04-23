@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Skill : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public abstract class Skill : MonoBehaviour {
         IsUsable = true;
         IsUse = false;
         Debug.Log("deeznt");
+
 	}
 	
 	// Update is called once per frame
@@ -34,9 +36,12 @@ public abstract class Skill : MonoBehaviour {
                 timeCoolDown = 0;
             }            
         }
-	}
+
+    }
 
     public void Use() {
+
+
         if (IsUsable)
         {
             IsUse = true;

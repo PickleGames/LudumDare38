@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackTrigger : MonoBehaviour {
 
@@ -8,9 +9,8 @@ public class AttackTrigger : MonoBehaviour {
 
     public GameObject player;
 
-
 	void Start () {
-
+  
     }
 	
 	// Update is called once per frame
@@ -37,6 +37,7 @@ public class AttackTrigger : MonoBehaviour {
             dir.Normalize();
             dir = -dir;
             go.GetComponent<Rigidbody2D>().AddForce(dir * strength);
+
         }
     }
 }
