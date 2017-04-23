@@ -5,33 +5,40 @@ using UnityEngine;
 public class AISpawner : MonoBehaviour {
 
     private List<GameObject> aiSeals;
+    public Transform[] spawnLocations;
+    public GameObject[] seals;
 
-    public GameObject seal;
-    
+    public Transform target;
+
 	// Use this for initialization
 	void Start () {
 
         aiSeals = new List<GameObject>();
+       
 	}
 
-
-    float delay;
+    float timer;
+    public float delay = 3f;
 	// Update is called once per frame
 	void Update () {
-        spawnSeals();
+        timer += Time.deltaTime;
+        if (timer > delay)
+        {
+            spawnSeals();
+            timer = 0;
+        }
+        
 	}
 
+    float yOffset = 40f;
     void spawnSeals()
     {
-        int rand = Random.Range(0,1);
+        int rand = Random.Range(0,2);
+        int randor = Random.Range(0,seals.Length);
+        GameObject g = Instantiate(seals[randor], spawnLocations[rand].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        Rigidbody2D rb = g.GetComponent<Rigidbody2D>();
 
-        if(rand > 0)
-        {
-            GameObject g = Instantiate(seal, new Vector3(0, -0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
-        }else
-        {
-            GameObject g = Instantiate(seal, new Vector3(-0, -0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
-        }
+        rb.AddForce((new Vector3(target.position.x, target.position.y + yOffset, target.position.z) - g.transform.position).normalized * 600);
             
     }
 }

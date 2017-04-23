@@ -20,22 +20,22 @@ public class PlayerMovement : MonoBehaviour {
     private GameObject sealTail;
 
 
-  //  private Animator animator;
+    private Animator animator;
    
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         seal = this.gameObject.transform.GetChild(0).gameObject;
 
-  //      animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
-        sealTail = this.gameObject.transform.GetChild(3).gameObject;
+        sealTail = this.gameObject.transform.GetChild(2).gameObject;
 
     }
 
     private void FixedUpdate()
     {
-        // check if doge is on ground
+        // check if seal is on ground
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
         // get WASD/ARROW input and move doge accordingly
@@ -72,8 +72,8 @@ public class PlayerMovement : MonoBehaviour {
         }
             
 
-     //   animator.SetFloat("Speed", rb.velocity.x);
-      //  animator.SetBool("Ground", grounded);
+        animator.SetFloat("Speed", rb.velocity.x);
+        animator.SetBool("Ground", grounded);
 
     }
 
