@@ -15,21 +15,22 @@ public class PlayerMovement : MonoBehaviour {
     public Transform groundCheck;
     float groundRadius = .25f;
     public LayerMask whatIsGround;
-
-    private Transform myTransform;
-
     private GameObject seal;
 
-    private Animator animator;
+    private GameObject sealTail;
+
+
+  //  private Animator animator;
    
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
-        myTransform = GetComponent<Transform>();
         seal = this.gameObject.transform.GetChild(0).gameObject;
 
-        animator = GetComponent<Animator>();
-        
+  //      animator = GetComponent<Animator>();
+
+        sealTail = this.gameObject.transform.GetChild(3).gameObject;
+
     }
 
     private void FixedUpdate()
@@ -42,6 +43,8 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
     }
 
+    bool directionLeft = true;
+    bool isFlip = false; 
     // Update is called once per frame
     void Update () {
 
@@ -50,17 +53,34 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(new Vector2(0, jumpForce));
         }
 
-        if (rb.velocity.x > 0)
+        if(Input.GetKey(KeyCode.RightArrow))
         {
-           seal.GetComponent<SpriteRenderer>().flipX = true;
+            if (rb.velocity.x > 0 && directionLeft)
+            {
+                Flip();
+                directionLeft = false;
+            }
+
         }
-        else
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            seal.GetComponent<SpriteRenderer>().flipX = false;
+            if (rb.velocity.x < 0 && !directionLeft)
+            {
+                Flip();
+                directionLeft = true;
+            }
         }
+            
 
-        animator.SetFloat("Speed", rb.velocity.x);
-        animator.SetBool("Ground", grounded);
+     //   animator.SetFloat("Speed", rb.velocity.x);
+      //  animator.SetBool("Ground", grounded);
 
+    }
+
+    public void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }
