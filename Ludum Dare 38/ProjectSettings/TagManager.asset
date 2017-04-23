@@ -16,8 +16,8 @@ TagManager:
   - 
   - 
   - Player
-  - Canvas
-  - 
+  - AI
+  - Background
   - 
   - 
   - 
@@ -40,8 +40,8 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
-    uniqueID: 2330470627
+  - name: Background
+    uniqueID: 1925314665
     locked: 0
   - name: Default
     uniqueID: 0

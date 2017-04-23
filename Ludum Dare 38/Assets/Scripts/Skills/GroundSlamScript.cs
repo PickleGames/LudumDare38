@@ -33,6 +33,11 @@ public class GroundSlamScript : MonoBehaviour {
             isJump = false;
         }
 
+        if (skill.IsUsable)
+        {
+            timeElapsed = 0;
+        }
+
         Debug.Log("ground " + player.GetComponent<PlayerMovement>().grounded);
         Debug.Log("time :" + timeElapsed);
     }

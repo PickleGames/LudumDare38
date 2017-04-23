@@ -11,7 +11,7 @@ public abstract class Skill : MonoBehaviour {
     public bool IsUse;
     public float strength;
 
-    private bool IsUsable;
+    public bool IsUsable;
 
     public void Awake () {
         IsUsable = true;
