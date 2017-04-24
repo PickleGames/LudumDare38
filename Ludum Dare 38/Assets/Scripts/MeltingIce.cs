@@ -25,6 +25,9 @@ public class MeltingIce : MonoBehaviour {
 
             GetComponentInChildren<AISpawner>().AdjustForMelt(1.015f);
             timeElapsed = 0;
+
+            float delay = GetComponentInChildren<AISpawner>().delay;
+            GetComponentInChildren<AISpawner>().delay = delay * .8f;
         }	
 	}
 }
