@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class EdgeScript : MonoBehaviour {
 
+    private AudioSource audioSource;
 
+    public AudioClip sound;
 
-	// Use this for initialization
-	void Start () {
-		
+    public static bool dead = false;
+
+    // Use this for initialization
+    void Start () {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = sound;
+
 	}
 	
 	// Update is called once per frame
@@ -29,8 +35,12 @@ public class EdgeScript : MonoBehaviour {
         Debug.Log("YOU HAVE HIT THE EDGE");
         if (go.CompareTag("SEAL"))
         {
+            audioSource.Play();
+            dead = true;          
             Debug.Log("PLAYER HAS HIT THE EDGE. REPEAT. PLAYER HIT EDGE");
-            SceneManager.LoadScene("EndScene");
+          
+           SceneManager.LoadScene("EndScene");        
+          
         }
     }
 }

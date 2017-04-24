@@ -17,6 +17,10 @@ public class Score : MonoBehaviour {
 
     public AudioClip[] sealSounds;
 
+    public Text shouting;
+    public string[] words;
+    public Transform player;
+
 	// Use this for initialization
 	void Start () {
 
@@ -29,6 +33,7 @@ public class Score : MonoBehaviour {
 	}
 
     float timeELapsed;
+    float timeElap;
 	// Update is called once per frame
 	void Update () {
 
@@ -36,6 +41,7 @@ public class Score : MonoBehaviour {
         timerText.text = "Time Left: " + timer.ToString();
 
         timeELapsed += Time.deltaTime;
+      
 
         if (timeELapsed > 1f)
         {
@@ -47,7 +53,19 @@ public class Score : MonoBehaviour {
         {
             SceneManager.LoadScene("EndScene");
         }
-           
+
+        shouting.transform.position = new Vector3(player.position.x, player.position.y + 1, player.position.z);
+
+        if (shouting.enabled)
+        {
+            timeElap += Time.deltaTime;
+            if (timeElap > .75f)
+            {
+                shouting.enabled = false;
+                timeElap = 0;
+            }
+
+        }
 
     }
 
@@ -62,7 +80,11 @@ public class Score : MonoBehaviour {
             Debug.Log("INCREMENTING SCORE!!");
             score += 1;
             PlaySound(rand);
+            shouting.enabled = true;
+            int randor = Random.Range(0,words.Length);
+            shouting.text = words[randor];
         }
+
     }
 
     void PlaySound(int clip)

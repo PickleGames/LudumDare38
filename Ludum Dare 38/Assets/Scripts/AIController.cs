@@ -58,7 +58,7 @@ public class AIController : MonoBehaviour {
             timer2 = 0;
         }
 
-        if (arfTimer > Random.Range(1,8))
+        if (arfTimer > Random.Range(5,8))
         {
             int rand = Random.Range(0, sealSounds.Length);
             audioSource.clip = sealSounds[rand];

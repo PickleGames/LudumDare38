@@ -10,12 +10,17 @@ public class EndScript : MonoBehaviour {
     private int score;
 
     public Text endText;
-    
-	// Use this for initialization
-	void Start () {
+
+
+
+
+    // Use this for initialization
+    void Start () {
         endText.text = "This is the end for you! Seal you later!";
         score = Score.score;
         scoreText.text = "Score: " + score.ToString();
+
+       
 	}
 	
 	// Update is called once per frame
