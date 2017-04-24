@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Miguel.unity
     guid: 8f92b879064f0604e8f1121c4b1dc72f
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: d0937e1f13cb7b34480ca5186bece9b1

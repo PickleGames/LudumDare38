@@ -44,12 +44,12 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (grounded && Input.GetKeyDown(KeyCode.W))
+        if (grounded && Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             rb.AddForce(new Vector2(0, jumpForce));
         }
 
-        if(Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             if (rb.velocity.x > 0 && directionLeft)
             {
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour {
             }
 
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             if (rb.velocity.x < 0 && !directionLeft)
             {

@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScripts : MonoBehaviour {
+    private AudioSource audioSource;
 
-	public string mainSceneName = null;
+    public AudioClip[] music;
+
+    public string mainSceneName = null;
 	//goes to main game scene
 	public void playButtonFunction() {
 		SceneManager.LoadScene(mainSceneName);
@@ -15,6 +18,7 @@ public class MenuScripts : MonoBehaviour {
 	public void quitButtonFunction() {
 		Application.Quit();
 	}
+
 
 
 }
