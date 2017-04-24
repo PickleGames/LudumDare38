@@ -30,7 +30,8 @@ public class AISpawner : MonoBehaviour {
         
 	}
 
-    float yOffset = 40f;
+   public float yOffset = 40f;
+    public float strength = 600f;
     void spawnSeals()
     {
         int rand = Random.Range(0,2);
@@ -38,7 +39,13 @@ public class AISpawner : MonoBehaviour {
         GameObject g = Instantiate(seals[randor], spawnLocations[rand].position, Quaternion.Euler(0, 0, 0)) as GameObject;
         Rigidbody2D rb = g.GetComponent<Rigidbody2D>();
 
-        rb.AddForce((new Vector3(target.position.x, target.position.y + yOffset, target.position.z) - g.transform.position).normalized * 600);
+        rb.AddForce((new Vector3(target.position.x, target.position.y + yOffset, target.position.z) - g.transform.position).normalized * strength);
             
+    }
+
+    public void AdjustForMelt(float scale)
+    {
+        yOffset *=  scale;
+        strength *= scale;
     }
 }
