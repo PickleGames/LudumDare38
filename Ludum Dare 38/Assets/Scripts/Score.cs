@@ -11,7 +11,9 @@ public class Score : MonoBehaviour {
     public static int score;
 
     public Text timerText;
-    public float timer; 
+    public float timer;
+
+    public Text slappoText;
 
     private AudioSource audioSource;
 
@@ -28,20 +30,29 @@ public class Score : MonoBehaviour {
         score = 0;
         scoreText.text = "Score: " + score.ToString();
         timerText.text = "Time Left: " + timer.ToString();
+        slappoText.text = "SLAP THOSE FILTHY PEASANTS!!!";
 
         audioSource = GetComponent<AudioSource>();
 	}
 
     float timeELapsed;
     float timeElap;
-	// Update is called once per frame
-	void Update () {
+
+    float slappoGoAway;
+    // Update is called once per frame
+    void Update() {
 
         scoreText.text = "Score: " + score.ToString();
         timerText.text = "Time Left: " + timer.ToString();
 
         timeELapsed += Time.deltaTime;
-      
+        slappoGoAway += Time.deltaTime;
+
+        if (slappoGoAway > 5f)
+        {
+            slappoText.enabled = false;
+        }
+
 
         if (timeELapsed > 1f)
         {
@@ -66,6 +77,8 @@ public class Score : MonoBehaviour {
             }
 
         }
+
+
 
     }
 
