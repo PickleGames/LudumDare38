@@ -18,6 +18,7 @@ public class AISpawner : MonoBehaviour {
 	}
 
     float timer;
+    float timeElapsed;
     public float delay = 3f;
 	// Update is called once per frame
 	void Update () {
@@ -27,10 +28,17 @@ public class AISpawner : MonoBehaviour {
             spawnSeals();
             timer = 0;
         }
-        
-	}
 
-   public float yOffset = 40f;
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed >= 5f)
+        {
+            AdjustForMelt(1.015f);
+            delay = delay * .8f;
+            timeElapsed = 0;
+        }
+    }
+
+    public float yOffset = 40f;
     public float strength = 600f;
     void spawnSeals()
     {

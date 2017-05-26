@@ -5,13 +5,8 @@ using UnityEngine;
 public class MeltingIce : MonoBehaviour {
 
     //NEED AJUST
-    public GameObject player;
-    private float time;
     private float timeElapsed;
-
-
 	void Start () {
-        time = player.transform.GetChild(6).GetComponent<Score>().timer;
 	}
 	
 	// Update is called once per frame
@@ -22,12 +17,7 @@ public class MeltingIce : MonoBehaviour {
             Vector3 scale = this.transform.localScale;
             scale.x *= .90f;
             this.transform.localScale = scale;
-
-            GetComponentInChildren<AISpawner>().AdjustForMelt(1.015f);
             timeElapsed = 0;
-
-            float delay = GetComponentInChildren<AISpawner>().delay;
-            GetComponentInChildren<AISpawner>().delay = delay * .8f;
         }	
 	}
 }
